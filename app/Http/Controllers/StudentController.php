@@ -8,7 +8,7 @@ class StudentController extends Controller
 {
     public function list()
     {
-        $students = Student::take(20)->get();
+        $students = Student::paginate(20);
         return view('student_show', compact('students'));
     }
 }

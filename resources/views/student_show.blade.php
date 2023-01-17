@@ -27,6 +27,10 @@
             @endforeach
         </table>
     </tbody>
+    <div class="pagination">
+        {{ $students->render() }}
+    </div>
+
 </body>
 
 </html>
