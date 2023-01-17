@@ -14,4 +14,9 @@ class StudentController extends Controller
         $students = Student::orderBy($orderBy, $order)->paginate(20);
         return view('student_show', compact('students'));
     }
+    public function show($student_id)
+    {
+        $student = Student::find($student_id);
+        return view('student_id', ['student' => $student]);
+    }
 }
