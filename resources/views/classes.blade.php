@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students</title>
+    <title>Document</title>
     <style>
         table {
             width: 100%;
@@ -56,7 +56,6 @@
             text-decoration: none;
         }
     </style>
-
 </head>
 
 <body>
@@ -64,29 +63,29 @@
         <a href="/">Retour</a>
     </div>
 
-    <tbody>
-        <table>
+    <table>
+        <thead>
             <tr>
-                <th>#</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Téléphone</th>
-                <th>Date de naissance</th>
+                <th>Nom de la classe</th>
+                <th>Année</th>
+                <th>Nombre d'élève</th>
             </tr>
-            @foreach ($students as $student)
+        </thead>
+        <tbody>
+            @foreach ($pageclass as $school)
             <tr>
-                <td>{{ $student->id }}</td>
-                <td>{{ $student->family_name }}</td>
-                <td>{{ $student->given_name }}</td>
-                <td>{{ $student->phone }}</td>
-                <td>{{ $student->birthday }}</td>
+                <td>{{ $school->class }} {{ $school->number }}</td>
+                <td>{{ $school->year }}</td>
+                <td>{{ $nombreEtudiant[$school->id-1]->students->count()}}</td>
             </tr>
             @endforeach
-        </table>
-    </tbody>
+        </tbody>
+    </table>
     <div class="pagination">
-        {{ $students->render() }}
+        {{ $pageclass->links() }}
     </div>
+
+
 
 </body>
 
