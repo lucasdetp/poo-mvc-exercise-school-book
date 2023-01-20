@@ -20,4 +20,10 @@ class SchoolClassController extends Controller
 
         ]);
     }
+    public function show($class_id)
+    {
+        $class = SchoolClass::findOrFail($class_id);
+        $students = $class->students;
+        return view('school_class_show', ['class' => $class, 'students' => $students]);
+    }
 }

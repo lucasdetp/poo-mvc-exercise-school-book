@@ -14,7 +14,4 @@ Route::get('/', function () {
 Route::get('/students', [StudentController::class, 'list'])->name('student.list');
 Route::get('/students/{student_id}', [StudentController::class, 'show']);
 Route::get('/classes', [SchoolClassController::class, 'list']);
-
-Route::get('/classes/{class_id}', function ($student_id) {
-    return abort(501, 'This should be a controller function');
-});
+Route::get('/classes/{class_id}', [SchoolClassController::class, 'show']);

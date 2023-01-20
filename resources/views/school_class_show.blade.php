@@ -23,23 +23,6 @@
             background-color: #f2f2f2;
         }
 
-        .pagination {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .pagination .page-item {
-            display: inline-block;
-            font-size: smaller;
-            padding: 0.5rem 0.75rem;
-        }
-
-        .w-5.h-5 {
-            width: 35px;
-            height: 35px;
-        }
-
         .back {
             margin-bottom: 20px;
             margin-top: 20px;
@@ -60,33 +43,34 @@
 
 <body>
     <div class="back">
-        <a href="/">Retour</a>
+        <a href="/classes">Retour</a>
     </div>
-
     <table>
         <thead>
             <tr>
-                <th>Nom de la classe</th>
-                <th>Année</th>
-                <th>Nombre d'élève</th>
-                <th>Informations supplémentaires</th>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Genre</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Date de naissance</th>
+                <th>Adresse</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($pageclass as $school)
+            @foreach($students as $student)
             <tr>
-                <td>{{ $school->class }} {{ $school->number }}</td>
-                <td>{{ $school->year }}</td>
-                <td>{{ $nombreEtudiant[$school->id-1]->students->count()}}</td>
-                <td><a href="/classes/{{ $school->id }}">Info</a></td>
+                <td>{{ $student->id }}</td>
+                <td>{{ $student->given_name }} {{ $student->family_name }}</td>
+                <td>{{ $student->gender }}</td>
+                <td>{{ $student->email }}</td>
+                <td>{{ $student->phone }}</td>
+                <td>{{ $student->birthday }}</td>
+                <td>{{ $student->street_address }}, {{ $student->city }}, {{ $student->zipcode }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div class="pagination">
-        {{ $pageclass->links() }}
-    </div>
-
 
 
 </body>
